@@ -21,7 +21,7 @@ RUN wget -qO- \
     
 ENV M2_HOME /opt/apache-maven-3.3.3
 RUN echo "export M2_HOME=$M2_HOME" >> /home/user/.bashrc
-EVN MAVEN_HOME /opt/apache-maven-3.3.3
+ENV MAVEN_HOME /opt/apache-maven-3.3.3
 RUN echo "export MAVEN_HOME=$MAVEN_HOME" >> /home/user/.bashrc
 ENV PATH $M2_HOME/bin:$PATH
 RUN echo "export PATH=$PATH" >> /home/user/.bashrc
