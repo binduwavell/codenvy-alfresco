@@ -16,7 +16,7 @@ ENV PATH $JAVA_HOME/bin:$PATH
 RUN echo "export PATH=$PATH" >> /home/user/.bashrc
 
 # install and setup maven
-RUN wget -q0- \
+RUN wget -qO- \
     "http://mirror.metrocast.net/apache/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.tar.gz" | sudo tar -zx -C /opt/
     
 ENV M2_HOME /opt/apache-maven-3.3.3
