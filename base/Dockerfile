@@ -2,6 +2,7 @@ FROM codenvy/shellinabox
 
 MAINTAINER Bindu Wavell <bindu@ziaconsulting.com>
 
+# install and setup java
 RUN wget \
     --no-cookies \
     --no-check-certificate \
@@ -14,7 +15,18 @@ RUN echo "export JAVA_HOME=$JAVA_HOME" >> /home/user/.bashrc
 ENV PATH $JAVA_HOME/bin:$PATH
 RUN echo "export PATH=$PATH" >> /home/user/.bashrc
 
-# install some components
+# install and setup maven
+RUN wget -q0- \
+    "http://mirror.metrocast.net/apache/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.tar.gz" | sudo tar -zx -C /opt/
+    
+ENV M2_HOME /opt/apache-maven-3.3.3
+RUN echo "export M2_HOME=$M2_HOME" >> /home/user/.bashrc
+EVN MAVEN_HOME /opt/apache-maven-3.3.3
+RUN echo "export MAVEN_HOME=$MAVEN_HOME" >> /home/user/.bashrc
+ENV PATH $M2_HOME/bin:$PATH
+RUN echo "export PATH=$PATH" >> /home/user/.bashrc
+
+# install setup npm and yeoman
 RUN sudo apt-get update && \
     sudo apt-get install -y python git ruby-full rubygems npm && \
     sudo ln -sf /usr/bin/nodejs /usr/bin/node && \
