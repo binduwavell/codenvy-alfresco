@@ -28,7 +28,7 @@ RUN echo "export PATH=$PATH" >> /home/user/.bashrc
 
 # install setup npm and yeoman
 RUN sudo apt-get update && \
-    sudo apt-get install -y python git ruby-full rubygems npm && \
+    sudo apt-get install -y python git ruby-full rubygems npm tmux && \
     sudo ln -sf /usr/bin/nodejs /usr/bin/node && \
     sudo npm install -g yo
 
