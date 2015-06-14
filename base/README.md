@@ -8,3 +8,4 @@ Releases
 
 * 0.1 Initial push
 * 0.2 Add tmux
+* 0.3 Make shellinabox use tmux and clean up apt caches

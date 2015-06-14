@@ -2,6 +2,15 @@ FROM codenvy/shellinabox
 
 MAINTAINER Bindu Wavell <bindu@ziaconsulting.com>
 
+# arrange for shellinabox to use tmux for session persitence
+ADD entrypoint.sh /entrypoint.sh
+ENV SHELL_IN_A_BOX_SERVICE /:user:users:/home/user:/usr/bin/tmux new -A -s runner
+RUN sudo apt-get update && \
+    sudo apt-get install -y tmux && \
+    sudo chmod 755 /entrypoint.sh && \
+    sudo apt-get clean && \
+    sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 # install and setup java
 RUN wget \
     --no-cookies \
@@ -28,9 +37,10 @@ RUN echo "export PATH=$PATH" >> /home/user/.bashrc
 
 # install setup npm and yeoman
 RUN sudo apt-get update && \
-    sudo apt-get install -y python git ruby-full rubygems npm tmux && \
+    sudo apt-get install -y python git ruby-full rubygems npm && \
     sudo ln -sf /usr/bin/nodejs /usr/bin/node && \
-    sudo npm install -g yo
+    sudo npm install -g yo && \
+    sudo chmod 755 /entrypoint.sh
 
 ENV HOME /home/user 
 
