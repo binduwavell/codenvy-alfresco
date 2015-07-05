@@ -1,4 +1,4 @@
-FROM binduwavell/codenvy-alfresco-sdk-2.1.0-community:0.2
+FROM binduwavell/codenvy-alfresco-sdk-2.1.0-community:0.3
 
 MAINTAINER Bindu Wavell <bindu@ziaconsulting.com>
 
