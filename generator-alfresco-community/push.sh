@@ -1,2 +1,2 @@
 #!/bin/bash
-docker push binduwavell/codenvy-alfresco-generator-community:0.2
+docker push binduwavell/codenvy-alfresco-generator-community:0.3
