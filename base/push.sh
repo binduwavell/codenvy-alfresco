@@ -1,2 +1,2 @@
 #!/bin/bash
-docker push binduwavell/codenvy-alfresco-base:0.3
+docker push binduwavell/codenvy-alfresco-base:0.4

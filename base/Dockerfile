@@ -1,15 +1,6 @@
-FROM codenvy/shellinabox
+FROM binduwavell/codenvy-alfresco-shellinabox:0.1
 
 MAINTAINER Bindu Wavell <bindu@ziaconsulting.com>
-
-# arrange for shellinabox to use tmux for session persitence
-ADD entrypoint.sh /entrypoint.sh
-ENV SHELL_IN_A_BOX_SERVICE /:user:users:/home/user:/usr/bin/tmux new -A -s runner
-RUN sudo apt-get update && \
-    sudo apt-get install -y tmux && \
-    sudo chmod 755 /entrypoint.sh && \
-    sudo apt-get clean && \
-    sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # install and setup java
 RUN wget \
@@ -36,11 +27,12 @@ ENV PATH $M2_HOME/bin:$PATH
 RUN echo "export PATH=$PATH" >> /home/user/.bashrc
 
 # install setup npm and yeoman
-RUN sudo apt-get update && \
-    sudo apt-get install -y python git ruby-full rubygems npm && \
+RUN wget -qO- "https://deb.nodesource.com/setup_5.x" | sudo bash - && \
+    sudo apt-get install -y python git ruby-full rubygems nodejs && \
     sudo ln -sf /usr/bin/nodejs /usr/bin/node && \
     sudo npm install -g yo && \
-    sudo chmod 755 /entrypoint.sh
+    sudo apt-get clean && \
+    sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV HOME /home/user 
 
