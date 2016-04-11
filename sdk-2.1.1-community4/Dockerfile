@@ -10,6 +10,8 @@ RUN mkdir /home/user/tmp && \
     cd deleteme && \
     mvn package -DskipTests && \
     chmod 755 run.sh && \
-    timeout 15m ./run.sh ; \
-    cd /home/user && \
-    rm -rf tmp
+    timeout -t 1000 -s KILL ./run.sh ; \
+    echo temporarily pausing
+
+RUN  cd /home/user && \
+     rm -rf /home/user/tmp

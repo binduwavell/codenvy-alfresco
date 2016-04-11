@@ -7,3 +7,4 @@ Releases
 ========
 
 * 0.1 Initial release
+* 0.2 Update how timeout is handled for alpine
