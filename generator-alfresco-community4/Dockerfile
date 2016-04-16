@@ -6,11 +6,7 @@ RUN mkdir -p /home/user/tmp && \
     cd /home/user/tmp && \
     git clone https://github.com/binduwavell/generator-alfresco.git && \
     cd /home/user/tmp/generator-alfresco && \
-    npm install
+    npm install && \
+    sudo npm link
 
-CMD bash -c "echo 'Checking if we need to copy node_modules' && test -d /projects/generator-alfresco/node_modules || echo 'Copying node_modules' && cp -r /home/user/tmp/generator-alfresco/node_modules /projects/generator-alfresco" ; \
-    cd /projects/generator-alfresco && \
-    bash -c "echo 'Checking if we need to npm link' && test -f /projects/generator-alfresco/package.json && echo 'Linking' &&  sudo npm link" ; \
-    sudo /usr/bin/ssh-keygen -A && \
-    sudo /usr/sbin/sshd -D && \
-    tail -f /dev/null
+WORKDIR /projects

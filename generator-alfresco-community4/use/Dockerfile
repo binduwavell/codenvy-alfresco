@@ -1,1 +1,1 @@
-FROM binduwavell/codenvy4-alfresco-generator-community:latest
+FROM binduwavell/codenvy4-alfresco-generator-community:0.2

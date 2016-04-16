@@ -7,3 +7,4 @@ Releases
 ========
 
 * 0.1 Initial release
+* 0.2 Not much new, mostly just trying to update the cached node_modules
